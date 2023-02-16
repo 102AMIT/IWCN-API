@@ -8,15 +8,12 @@ const db = require('./config/sql');
 app.use(cors());
 app.use(express.json());
 
-app.get('/',(req,res)=>{
-    const insert = "INSERT INTO details (title,description) VALUES ('title1','description1')";
-    db.query(insert,(err,result)=>{
-        console.log(err,"error");
-        console.log(result,"result");
-        res.send("hello world");
 
-    })
-})
+// Routes accessible through
+app.use('/api',require('./routes'));
+
+
+
 
 app.listen(port,(err)=>{
     if(err) console.log("Error in Backend Server Start", err);
